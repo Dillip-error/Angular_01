@@ -1,0 +1,9 @@
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touch{
+
+    border: 1px solid red;
+    box-shadow: 0 0 13px inset(red,green);
+}
+input.ng-dirty{
+    border: 1px solid blue;
+}
