@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8" style="width: 100%;">
+
+    <div fxLayout fxLayoutAlign="center center">
+        <mat-form-field fxFlex="40%">
+          <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+
+    <table mat-table [dataSource]="dataSource" style="width: 100%;" matSort>
+
+        <ng-container matColumnDef="employeeId" >
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>EmployeeId</b></th>
+            <td mat-cell *matCellDef="let element">{{element.employeeId}}</td>
+        </ng-container >
+
+        <ng-container matColumnDef="employeeName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>EmployeeName</b></th>
+            <td mat-cell *matCellDef="let element">{{element.employeeName}}</td>
+        </ng-container > 
+
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Gender</b></th>
+            <td mat-cell *matCellDef="let element">{{element.gender}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mobNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>MobNo</b></th>
+            <td mat-cell *matCellDef="let element">{{element.mobNo}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="email"> 
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Email</b></th>
+            <td mat-cell *matCellDef="let element">{{element.email}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="salary">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Salary</b></th>
+            <td mat-cell *matCellDef="let element">{{element.salary}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+        <tr mat-row *matRowDef="let element;columns:displayColumn"></tr>
+
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5,2,3,4,1]" showFirstLastButtons></mat-paginator>
+    
+</div>
