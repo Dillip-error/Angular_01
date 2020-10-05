@@ -1,0 +1,142 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container">
+
+    <div class="row">
+        <h1> State Bank Of India...!! </h1>
+    </div>
+ <form [formGroup]="testForm" (ngSubmit)="onSubmit()">
+ 
+    <!--Country Dropdown-->
+  <div class="form-group col-6">
+      <label class="control-label" for="Country">Country:</label>
+      <select (change)="onSelectCountry($event.target.value)" formControlName="countryData" class="form-control input-lg" id="country">
+          <option value="0">Select Country</option>
+          <option *ngFor="let country of getCountries()" value={{country.id}}>{{country.name}}</option><!--value="{{country.id}} and {{country.name}}-->
+      </select>
+      <button class="btn-info" (click)='openModel(form)'>Add more..</button>
+  </div>
+   
+   <!--State Dropdown-->
+  <div class="form-group col-6">
+  <label class="control-label" for="States">States:</label>
+      <select (change)="onSelectState($event.target.value)" formControlName="stateData" class="form-control input-lg" id="state">
+          <option value="0">Select State</option>
+          <option *ngFor="let state of states" value= {{state.id}} >{{state.name}}</option>
+      </select>
+      <button class="btn-info" (click)='openModel(state)'>Add more..</button>
+
+  </div>
+   
+   <!--City Dropdown-->
+  <div class="form-group col-6">
+  <label class="control-label" for="City">City:</label>
+      <select (change)="onSelectCity($event.target.value)" formControlName="cityData" class="form-control input-lg" id="city">
+              <option *ngIf="!selectedState" value="0">Select City</option>
+              <option *ngFor="let city of cities" value= {{city.id}}>{{city.name}}</option>
+      </select>
+      <button class="btn-info" (click)='openModel(city)'>Add more..</button>
+  </div>
+
+  <!--Region Dropdown-->
+  <div class="form-group col-6">
+      <label class="control-label" for="City">Region:</label>
+          <select formControlName="regionData" class="form-control input-lg" id="city">
+                  <option *ngIf="!selectedCity" value="0">Select Region</option>
+                  <option *ngFor="let branch of region" value= {{branch.id}}>{{branch.name}}"</option>
+          </select>
+          <button class="btn-info" (click)='openModel(branch)'>Add more..</button>
+  </div>
+
+  <button type="submit" class="btn btn-outline-warning">Submit</button>
+ </form>
+</div>
+
+<!--Country-->
+<ng-template #form>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add More Country...</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+     <form >
+        <div class="form-group">
+
+            <div class="col-6">
+              
+                <input type="text" placeholder="Enter Country Name" class="form-control" #name>
+            </div>
+            <input type="submit" value="Submit" (click)="addData(name.value)" class="btn btn-success">
+        </div>
+     </form>
+</div>
+</ng-template>
+
+<!--State-->
+<ng-template #state>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add More States...</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+     <form>
+        <div class="form-group">
+            <div class="col-6">
+                <!-- <input type="text" placeholder="Enter State_id" class="form-control" #id><div></div>
+                <input type="text" placeholder="Enter Country_id" class="form-control" #c_id> -->
+                <input type="text" placeholder="Enter State Name" class="form-control" #name>
+            </div>
+            <input type="submit" value="Submit" (click)="addState(name.value)" class="btn btn-success">
+        </div>
+     </form>
+</div>
+</ng-template>
+
+<!--City-->
+<ng-template #city>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add More City...</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+     <form>
+        <div class="form-group">
+            <div class="col-6">
+             <!--   <input type="text" placeholder="Enter City_id" class="form-control" #id>
+                <input type="text" placeholder="Enter State_id" class="form-control" #s_id>-->
+
+                <input type="text" placeholder="Enter City Name" class="form-control" #name>
+            </div>
+            <input type="submit" value="Submit" (click)="addCity(name.value)" class="btn btn-success">
+        </div>
+     </form>
+</div>
+</ng-template>
+
+<!--Branch-->
+<ng-template #branch>
+    <div>
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Add More Branch...</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+     <form>
+        <div class="form-group">
+            <div class="col-6">
+               <!-- <input type="text" placeholder="Enter Region_id" class="form-control" #id><div></div>
+                <input type="text" placeholder="Enter City_id" class="form-control" #c_id><div></div>-->
+               
+                <input type="text" placeholder="Enter Region Name" class="form-control" #name>
+            </div>
+            <input type="submit" value="Submit" (click)="addRegions(name.value)" class="btn btn-success">
+        </div>
+     </form>
+</div>
+</ng-template>
