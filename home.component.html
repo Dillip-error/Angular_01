@@ -1,0 +1,37 @@
+<div class="page-area">
+    <h2 align="center">Home Page</h2>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <app-ng-content-card>
+                <h5 class="card-title">Laptop</h5>
+                <button class="btn btn-primary" (click)="onBtnClick()">know more Laptop</button>
+            </app-ng-content-card>
+        </div>
+
+        <div class="col-md-4">
+            <app-ng-content-card>
+                <h5 class="card-title">Mobile</h5>
+                <button class="btn btn-primary">know more Mobile</button>
+            </app-ng-content-card>
+        </div>
+
+       
+
+        <div class="col-md-4">
+            <app-ng-content-card>
+                <h5 class="card-title">MensItems</h5>
+                <button class="btn btn-primary">know more MensItems</button>
+            </app-ng-content-card>
+        </div>
+    </div>
+
+    <div align="center">
+        <ng-container *ngIf="statusonline">
+            <div  *ngFor="let proitm of products">
+                <b>{{proitm.name}}</b>
+            </div>
+        </ng-container>
+        <button class="btn btn-primary" (click)="onBoolean()">show more </button>
+    </div>
+</div>
